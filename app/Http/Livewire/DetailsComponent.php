@@ -15,7 +15,6 @@ class DetailsComponent extends Component
         $this->slug = $slug;
     }
 
-
     public function store($product_id,$product_name,$product_price)
     {
         Cart::instance('cart')->add($product_id,$product_name,$this->qty,$product_price)->associate('App\\Models\\Product');
