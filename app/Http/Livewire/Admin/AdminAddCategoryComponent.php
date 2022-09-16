@@ -31,6 +31,7 @@ class AdminAddCategoryComponent extends Component
             'slug' => 'required|unique:categories'
         ]);
 
+
         $category = new Category();
         $category->name = $this->name;
         $category->slug = $this->slug;

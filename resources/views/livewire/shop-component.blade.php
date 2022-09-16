@@ -81,13 +81,13 @@
                                         <a href="{{route('product.details',['slug'=>$product->slug])}}" class="product-name"><span>{{$product->name}}</span></a>
                                         <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
                                         <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
-                                        <div class="product-wish">
-                                            @if($witems->contains($product->id))
-                                                <a href="#" wire:click.prevent="removeFromWishlist({{$product->id}})"><i class="fa fa-heart fill-heart"></i></a>
-                                            @else
-                                                <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fa fa-heart"></i></a>
-                                            @endif
-                                        </div>
+{{--                                        <div class="product_wish">--}}
+{{--                                            @if($witems->contains($product->id))--}}
+{{--                                                <a href="#" wire:click.prevent="removeFromWishlist({{$product->id}})"><i class="fa fa-heart fill-heart"></i></a>--}}
+{{--                                            @else--}}
+{{--                                                <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fa fa-heart"></i></a>--}}
+{{--                                            @endif--}}
+{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </li>
@@ -133,16 +133,11 @@
                 </div><!-- brand widget-->
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Price</h2>
-                    <div class="widget-content">
-                        <div id="slider-range"></div>
-                        <p>
-                            <label for="amount">Price:</label>
-                            <input type="text" id="amount" readonly>
-                            <button class="filter-submit">Filter</button>
-                        </p>
+                    <h2 class="widget-title">Price <span class="text-info">${{$min_price}} - ${{$max_price}}</span></h2>
+                    <div class="widget-content" style="padding:10px 5px 40px 5px;">
+                        <div id="slider" wire:ignore></div>
                     </div>
-                </div><!-- Price-->
+                </div>
 
                 <div class="widget mercado-widget filter-widget">
                     <h2 class="widget-title">Color</h2>
@@ -244,3 +239,26 @@
     </div><!--end container-->
 </main>
 
+@push('scripts')
+    <script>
+        var slider = document.getElementById('slider');
+        noUiSlider.create(slider,{
+            start : [1,1000],
+            connect:true,
+            range :{
+                'min' : 1,
+                'max' : 1000
+            },
+            pips:{
+                mode:'steps',
+                stepped:true,
+                density:4
+            }
+        });
+
+        slider.noUiSlider.on('update',function(value){
+        @this.set('min_price',value[0]);
+        @this.set('max_price',value[1]);
+        });
+    </script>
+@endpush

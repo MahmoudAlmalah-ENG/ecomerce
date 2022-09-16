@@ -15,6 +15,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css" rel="stylesheet" />
+
     @livewireStyles
 </head>
 <body class="home-page home-01 ">
@@ -71,6 +74,18 @@
                                                     <a title="Products" href="{{ route('admin.products') }}">Products</a>
                                                 </li>
 
+                                                <li class=menu-item>
+                                                    <a title=ManageHomeSlider href={{route('admin.homeslider')}}>Manage Home Slider</a>
+                                                </li>
+
+                                                <li class="menu-item">
+                                                    <a title="Manage Home Categories" href="{{route('admin.homecategories')}}">Manage Home Categories</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{route('admin.sale')}}">Manage Sale</a>
+                                                </li>
+
                                                 <li class="menu-item">
                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                                 </li>
@@ -117,7 +132,9 @@
                             <a href="#" class="link-direction">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">0 item</span>
+                                    @if(Cart::instance('wishlist')->count() > 0)
+                                        <span class="index">{{Cart::instance('wishlist')->count()}} item</span>
+                                    @endif
                                     <span class="title">Wishlist</span>
                                 </div>
                             </a>
@@ -242,6 +259,10 @@
 <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 <script src="{{ asset('assets/js/functions.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
+
 @livewireScripts
+@stack('scripts')
 </body>
 </html>

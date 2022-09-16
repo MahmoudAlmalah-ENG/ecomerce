@@ -17,7 +17,7 @@
                                 All Products
                             </div>
                             <div class="col-md-6">
-                                <a href="#" class="btn btn-success pull-right">Add New</a>
+                                <a href="{{route('admin.addproduct')}}" class="btn btn-success pull-right">Add New</a>
                             </div>
                         </div>
                     </div>
@@ -37,6 +37,7 @@
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Action</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -44,13 +45,16 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60" /></td>
-                                    <td>{{$product->name ?? Null}}</td>
+                                    <td>{{$product->name }}</td>
                                     <td>{{$product->stock_status}}</td>
                                     <td>{{$product->regular_price}}</td>
                                     <td>{{$product->sale_price}}</td>
                                     <td>{{$product->category->name ?? Null}}</td>
                                     <td>{{$product->created_at}}</td>
-                                    <td></td>
+                                    <td><a href="{{route('admin.editproduct',['product_slug'=>$product->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a></td>
+                                    <td>
+                                        <a href="#" onclick="confirm('Are you sure, you want to delete this product?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="deleteProduct({{$product->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

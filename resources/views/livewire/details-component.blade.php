@@ -1,5 +1,7 @@
 
 <div class="wrap-product-detail">
+
+
     <div class="detail-media">
         <div class="product-gallery" wire:ignore>
             <ul class="slides">
@@ -27,7 +29,7 @@
         <div class="wrap-social">
             <a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
         </div>
-        @if($product->sale_price > 0  && $sale->status == 1 && $sale->sale_date > CarbonCarbon::now())
+        @if($product->sale_price > 0  && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
             <div class="wrap-price">
                 <span class="product-price">${{$product->sale_price}}</span>
                 <del><span class="product-price regprice">${{$product->regular_price}}</span></del>
@@ -46,16 +48,20 @@
                 <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity"></a>
             </div>
         </div>
+
         <div class="wrap-butons">
-            @if($product->sale_price > 0  && $sale->status == 1 && $sale->sale_date > CarbonCarbon::now())
+            @if($product->sale_price > 0  && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                 <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">Add to Cart</a>
             @else
                 <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
             @endif
-            <div class="wrap-btn">
-                <a href="#" class="btn btn-compare">Add Compare</a>
-                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
-            </div>
+{{--            <div class="wrap-btn">--}}
+{{--                @if($witems->contains($product->id))--}}
+{{--                    <a href="#"  wire:click.prevent="removeFromWishlist({{$product->id}})" class="btn btn-wishlist" >Add Wishlist</a>--}}
+{{--                @else--}}
+{{--                    <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})" class="btn btn-wishlist">Add Wishlist</a>--}}
+{{--                @endif--}}
+{{--            </div>--}}
         </div>
     </div>
     <div class="advance-info">
