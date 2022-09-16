@@ -41,27 +41,6 @@
                     {{--                    end--}}
                 </div><!--end wrap shop control-->
 
-                <style>
-                    .product-wish{
-                        position: absolute;
-                        top:10%;
-                        left:0;
-                        z-index:99;
-                        right:30px;
-                        text-align:right;
-                        padding-top: 0;
-                    }
-                    .product-wish .fa{
-                        color:#cbcbcb;
-                        font-size:32px;
-                    }
-                    .product-wish .fa:hover{
-                        color:#ff7007;
-                    }
-                    .fill-heart{
-                        color:#ff7007 !important;
-                    }
-                </style>
 
                 <div class="row">
 

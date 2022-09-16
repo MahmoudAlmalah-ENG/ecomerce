@@ -40,6 +40,7 @@
         <div class="stock-info in-stock">
             <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
         </div>
+
         <div class="quantity">
             <span>Quantity:</span>
             <div class="quantity-input">
@@ -55,13 +56,9 @@
             @else
                 <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
             @endif
-{{--            <div class="wrap-btn">--}}
-{{--                @if($witems->contains($product->id))--}}
-{{--                    <a href="#"  wire:click.prevent="removeFromWishlist({{$product->id}})" class="btn btn-wishlist" >Add Wishlist</a>--}}
-{{--                @else--}}
-{{--                    <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})" class="btn btn-wishlist">Add Wishlist</a>--}}
-{{--                @endif--}}
-{{--            </div>--}}
+                <div class="product_wish">
+                    <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fa fa-heart"></i></a>
+                </div>
         </div>
     </div>
     <div class="advance-info">

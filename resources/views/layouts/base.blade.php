@@ -12,11 +12,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flexslider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css" integrity="sha512-KRrxEp/6rgIme11XXeYvYRYY/x6XPGwk0RsIC6PyMRc072vj2tcjBzFmn939xzjeDhj0aDO7TDMd7Rbz3OEuBQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @livewireStyles
 
     @livewireStyles
 </head>
@@ -87,6 +91,10 @@
                                                 </li>
 
                                                 <li class="menu-item">
+                                                    <a title="All Coupon" href="{{route('admin.coupons')}}">All Coupon</a>
+                                                </li>
+
+                                                <li class="menu-item">
                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                                 </li>
                                                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
@@ -128,28 +136,10 @@
                     @livewire('header-search-component')
 
                     <div class="wrap-icon right-section">
-                        <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    @if(Cart::instance('wishlist')->count() > 0)
-                                        <span class="index">{{Cart::instance('wishlist')->count()}} item</span>
-                                    @endif
-                                    <span class="title">Wishlist</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="wrap-icon-section minicart">
-                            <a href="{{route('product.cart')}}" class="link-direction">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    @if(Cart::instance('cart')->count() > 0)
-                                        <span class="index">{{Cart::instance('cart')->count()}} items</span>
-                                    @endif
-                                    <span class="title">CART</span>
-                                </div>
-                            </a>
-                        </div>
+                        @livewire('wishlist-count-component')
+
+                        @livewire('cart-count-component')
+
                         <div class="wrap-icon-section show-up-after-1024">
                             <a href="#" class="mobile-navigation">
                                 <span></span>
@@ -259,9 +249,15 @@
 <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 <script src="{{ asset('assets/js/functions.js') }}"></script>
+<script src="{{ asset('assets/js/chosen.jquery.min.js') }}\"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/5y7ba6agy0w0ef6squ61t0vdcnbd1rszhela8v055jfq69p8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
 @livewireScripts
 @stack('scripts')
 </body>

@@ -35,14 +35,14 @@
         <!--On Sale-->
 
         @if($sproducts->count() > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now() )
-            <div class="wrap-show-advance-info-box style-1 has-countdown">
+            <div class="wrap-show-advance-info-box style-1 has-countdown" style="">
                 <h3 class="title-box">On Sale</h3>
                 <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($sale->sale_date)->format('Y/m/d h:m:s') }}"></div>
-                <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}' >
                     @foreach ($sproducts as $sproduct)
                         <div class="product product-style-2 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" title="{{$sproduct->name}}">
+                                <a href="{{ route('product.details',['slug'=>$sproduct->slug])}}" title="{{$sproduct->name}}">
                                     <figure><img src="{{ asset('assets/images/products') }}/{{$sproduct->image}}" width="800" height="800" alt=""></figure>
                                 </a>
                                 <div class="group-flash">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="product-info">
-                                <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" class="product-name"><span>{{$sproduct->name}}</span></a>
+                                <a href="{{ route('product.details',['slug'=>$sproduct->slug])}}" class="product-name"><span>{{$sproduct->name}}</span></a>
                                 <div class="wrap-price"><ins><p class="product-price">${{$sproduct->sale_price}}</p></ins> <del><p class="product-price">${{$sproduct->regular_price}}</p></del></div>
                             </div>
                         </div>

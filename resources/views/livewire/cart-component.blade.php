@@ -31,7 +31,6 @@
                                     <div class="product-name">
                                         <a class="link-to-product" href="{{route('product.details',['slug'=>$item->model->slug])}}">{{$item->model->name}}</a>
                                     </div>
-                                    <div class="price-field produtc-price"><p class="price">${{$item->model->regular_price}}</p></div>
                                     <div class="quantity">
                                         <div class="quantity-input">
                                             <input type="text" name="product-quatity" value="{{$item->qty}}" data-max="120" pattern="[0-9]*" >
@@ -71,30 +70,30 @@
                             <p class="summary-info total-info "><span class="title">Total</span><b class="index">${{Cart::instance('cart')->total()}}</b></p>
                         @endif
                     </div>
-{{--                    <div class="checkout-info">--}}
-{{--                        @if(!Session::has('coupon'))--}}
-{{--                            <label class="checkbox-field">--}}
-{{--                                <input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>I have coupon code</span>--}}
-{{--                            </label>--}}
-{{--                            @if($haveCouponCode == 1)--}}
-{{--                                <div class="summary-item">--}}
-{{--                                    <form wire:submit.prevent="applyCouponCode">--}}
-{{--                                        <h4 class="title-box">Coupon Code</h4>--}}
-{{--                                        @if(Session::has('coupon_message'))--}}
-{{--                                            <div class="alert alert-danger" role="danger">{{Session::get('coupon_message')}}</div>--}}
-{{--                                        @endif--}}
-{{--                                        <p class="row-in-form">--}}
-{{--                                            <label for="coupon-code">Enter your coupon code:</label>--}}
-{{--                                            <input type="text" name="coupon-code" wire:model="couponCode" />--}}
-{{--                                        </p>--}}
-{{--                                        <button type="submit" class="btn btn-small">Apply</button>--}}
-{{--                                    </form>--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                        @endif--}}
-{{--                        <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>--}}
-{{--                        <a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>--}}
-{{--                    </div>--}}
+                    <div class="checkout-info">
+                        @if(!Session::has('coupon'))
+                            <label class="checkbox-field">
+                                <input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>I have coupon code</span>
+                            </label>
+                            @if($haveCouponCode == 1)
+                                <div class="summary-item">
+                                    <form wire:submit.prevent="applyCouponCode">
+                                        <h4 class="title-box">Coupon Code</h4>
+                                        @if(Session::has('coupon_message'))
+                                            <div class="alert alert-danger" role="danger">{{Session::get('coupon_message')}}</div>
+                                        @endif
+                                        <p class="row-in-form">
+                                            <label for="coupon-code">Enter your coupon code:</label>
+                                            <input type="text" name="coupon-code" wire:model="couponCode" />
+                                        </p>
+                                        <button type="submit" class="btn btn-small">Apply</button>
+                                    </form>
+                                </div>
+                            @endif
+                        @endif
+                        <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>
+                        <a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                    </div>
                     <div class="update-clear">
                         <a class="btn btn-clear" href="#" wire:click.prevent="destroyAll()">Clear Shopping Cart</a>
                         <a class="btn btn-update" href="#">Update Shopping Cart</a>
@@ -144,6 +143,7 @@
                     <p>No item saved for later</p>
                 @endif
             </div>
+
 
         </div><!--end main content area-->
     </div><!--end container-->
