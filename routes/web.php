@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
+use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
@@ -59,6 +61,8 @@ Route::get('/search',SearchComponent::class)->name('product.search');
 Route::get('/wishlist',WishlistComponent::class)->name('product.wishlist');
 Route::get('/thank-you',ThankyouComponnent::class)->name('thankyou');
 Route::get('/product-category/{category_slug}/{scategory_slug?}',CategoryComponent::class)->name('product.category');
+Route::get('/contact-us',ContactComponent::class)->name('contact');
+Route::get('/admin/contact',AdminContactComponent::class)->name('admin.contact');
 
 
 /*
@@ -103,4 +107,5 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function (){
     Route::get('/admin/coupon/edit/{coupon_id}',AdminEditCouponComponent::class)->name('admin.editcoupon');
     Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
     Route::get('/admin/category/edit/{category_slug}/{scategory_slug?}',AdminEditCategoryComponent::class)->name('admin.editcategory');
+
 });
