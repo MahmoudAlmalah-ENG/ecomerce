@@ -41,6 +41,7 @@
             <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
         </div>
 
+
         <div class="quantity">
             <span>Quantity:</span>
             <div class="quantity-input">
@@ -50,15 +51,14 @@
             </div>
         </div>
 
+
         <div class="wrap-butons">
             @if($product->sale_price > 0  && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                 <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">Add to Cart</a>
             @else
                 <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
             @endif
-                <div class="product_wish">
-                    <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fa fa-heart"></i></a>
-                </div>
+
         </div>
     </div>
     <div class="advance-info">
@@ -91,7 +91,7 @@
                 <div class="wrap-review-form">
                     <style>
                         .width-0-percent{
-                            width:0;
+                            width:0%;
                         }
                         .width-20-percent{
                             width:20%;
@@ -109,11 +109,6 @@
                             width:100%;
                         }
                     </style>
-
-
-                    <div id="comments">
-
-                    </div><!-- #comments -->
 
                 </div>
             </div>

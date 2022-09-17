@@ -95,6 +95,10 @@
                                                 </li>
 
                                                 <li class="menu-item">
+                                                    <a title="All Orders" href="{{route('admin.orders')}}">All Orders</a>
+                                                </li>
+
+                                                <li class="menu-item">
                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                                 </li>
                                                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
@@ -109,6 +113,15 @@
                                                 <li class="menu-item" >
                                                     <a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
                                                 </li>
+
+                                                <li class="menu-item" >
+                                                    <a title="My Orders" href="{{ route('user.orders') }}">My Orders</a>
+                                                </li>
+
+                                                <li class="menu-item" >
+                                                    <a title="reset pass" href="{{ route('user.changepassword') }}">Change Password</a>
+                                                </li>
+
                                                 <li class="menu-item">
                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                                 </li>
@@ -249,6 +262,12 @@
 <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 <script src="{{ asset('assets/js/functions.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/5y7ba6agy0w0ef6squ61t0vdcnbd1rszhela8v055jfq69p8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
 <script src="{{ asset('assets/js/chosen.jquery.min.js') }}\"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>

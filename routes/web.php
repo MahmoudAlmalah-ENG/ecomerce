@@ -2,9 +2,11 @@
 
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
+use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
+use App\Http\Livewire\User\UserReviewComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
@@ -55,9 +57,8 @@ Route::get('/product/{slug}',DetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}',CategoryComponent::class)->name('product.category');
 Route::get('/search',SearchComponent::class)->name('product.search');
 Route::get('/wishlist',WishlistComponent::class)->name('product.wishlist');
-//
-//Route::get('/thank-you',ThankyouComponnent::class)->name('thankyou');
-//Route::get('/product-category/{category_slug}/{scategory_slug?}',CategoryComponent::class)->name('product.category');
+Route::get('/thank-you',ThankyouComponnent::class)->name('thankyou');
+Route::get('/product-category/{category_slug}/{scategory_slug?}',CategoryComponent::class)->name('product.category');
 
 
 /*
@@ -75,10 +76,11 @@ Route::middleware([
 //for user
 Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
-//    Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
-//    Route::get('/user/orders/{order_id}',UserOrderDetailsComponent::class)->name('user.orderdetails');
+    Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
+    Route::get('/user/orders/{order_id}',UserOrderDetailsComponent::class)->name('user.orderdetails');
 //    Route::get('/user/profile',UserProfileComponent::class)->name('user.profile');
-
+    Route::get('/user/review/{order_item_id}',UserReviewComponent::class)->name('user.review');
+    Route::get('/user/change-password',UserChangePasswordComponent::class)->name('user.changepassword');
 });
 
 //for admin
@@ -96,9 +98,9 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function (){
     Route::get('/admin/sale',AdminSaleComponent::class)->name('admin.sale');
     Route::get('/admin/coupons',AdminCouponsComponent::class)->name('admin.coupons');
     Route::get('/admin/coupon/add',AdminAddCouponComponent::class)->name('admin.addcoupon');
-//    Route::get('/admin/orders',AdminOrderComponent::class)->name('admin.orders');
+    Route::get('/admin/orders',AdminOrderComponent::class)->name('admin.orders');
     Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
     Route::get('/admin/coupon/edit/{coupon_id}',AdminEditCouponComponent::class)->name('admin.editcoupon');
-//    Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
+    Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
     Route::get('/admin/category/edit/{category_slug}/{scategory_slug?}',AdminEditCategoryComponent::class)->name('admin.editcategory');
 });
