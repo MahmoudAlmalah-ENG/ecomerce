@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Livewire\Admin\AdminAddAttributesComponent;
+use App\Http\Livewire\Admin\AdminAttributesComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
+use App\Http\Livewire\Admin\AdminEditAttributesComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
+use App\Http\Livewire\User\UserEditProfileComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
@@ -62,7 +66,7 @@ Route::get('/wishlist',WishlistComponent::class)->name('product.wishlist');
 Route::get('/thank-you',ThankyouComponnent::class)->name('thankyou');
 Route::get('/product-category/{category_slug}/{scategory_slug?}',CategoryComponent::class)->name('product.category');
 Route::get('/contact-us',ContactComponent::class)->name('contact');
-Route::get('/admin/contact',AdminContactComponent::class)->name('admin.contact');
+Route::get('/product-category/{category_slug}/{scategory_slug?}',CategoryComponent::class)->name('product.category');
 
 
 /*
@@ -82,9 +86,10 @@ Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
     Route::get('/user/orders/{order_id}',UserOrderDetailsComponent::class)->name('user.orderdetails');
-//    Route::get('/user/profile',UserProfileComponent::class)->name('user.profile');
     Route::get('/user/review/{order_item_id}',UserReviewComponent::class)->name('user.review');
     Route::get('/user/change-password',UserChangePasswordComponent::class)->name('user.changepassword');
+    Route::get('/user/profile',UserProfileComponent::class)->name('user.profile');
+    Route::get('/user/edit',UserEditProfileComponent::class)->name('user.profile_edit');
 });
 
 //for admin
@@ -107,5 +112,9 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function (){
     Route::get('/admin/coupon/edit/{coupon_id}',AdminEditCouponComponent::class)->name('admin.editcoupon');
     Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
     Route::get('/admin/category/edit/{category_slug}/{scategory_slug?}',AdminEditCategoryComponent::class)->name('admin.editcategory');
-
+    Route::get('/admin/category/edit/{category_slug}/{scategory_slug?}',AdminEditCategoryComponent::class)->name('admin.editcategory');
+    Route::get('/admin/contact',AdminContactComponent::class)->name('admin.contact');
+    Route::get('/admin/attribute',AdminAttributesComponent::class)->name('admin.attributes');
+    Route::get('/admin/attribute/add',AdminAddAttributesComponent::class)->name('admin.add_attributes');
+    Route::get('/admin/attribute/edit/{attribute_id}',AdminEditAttributesComponent::class)->name('admin.edit_attributes');
 });

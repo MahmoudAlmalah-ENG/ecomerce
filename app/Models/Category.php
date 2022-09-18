@@ -10,4 +10,10 @@ class Category extends Model
     use HasFactory;
 
     protected $table = "categories";
+
+    public function subCategories()
+    {
+        return $this->hasMany(Subcategory::class,'category_id');
+    }
 }
+

@@ -7,12 +7,19 @@ use App\Models\HomeCategory;
 use App\Models\HomeSlider;
 use App\Models\Product;
 use App\Models\Sale;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Cart;
 
 class HomeComponent extends Component
 {
     public function render()
     {
+        if(Auth::check())
+        {
+            Cart::instance('cart')->restore(Auth::user()->email);
+            Cart::instance('wishlist')->restore(Auth::user()->email);
+        }
         $sliders = HomeSlider::where('status',1)->get();
         $lproducts = Product::orderBy('created_at','DESC')->get()->take(8);
         $category = HomeCategory::find(1);
